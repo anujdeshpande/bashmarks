@@ -30,7 +30,7 @@
 # p b[TAB] - tab completion is available
 # d bookmarkname - deletes the bookmark
 # d [TAB] - tab completion is available
-# l - list all bookmarks
+# ll - list all bookmarks
 
 # setup file to store bookmarks
 if [ ! -n "$SDIRS" ]; then
@@ -91,13 +91,13 @@ function check_help {
         echo 'g <bookmark_name> - Goes (cd) to the directory associated with "bookmark_name"'
         echo 'p <bookmark_name> - Prints the directory associated with "bookmark_name"'
         echo 'd <bookmark_name> - Deletes the bookmark'
-        echo 'l                 - Lists all available bookmarks'
+        echo 'll                - Lists all available bookmarks'
         kill -SIGINT $$
     fi
 }
 
 # list bookmarks with dirnam
-function l {
+function ll {
     check_help $1
     source $SDIRS
         
