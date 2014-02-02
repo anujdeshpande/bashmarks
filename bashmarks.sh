@@ -26,7 +26,7 @@
 # s bookmarkname - saves the curr dir as bookmarkname
 # g bookmarkname - jumps to the that bookmark
 # g b[TAB] - tab completion is available
-# p bookmarkname - prints the bookmark
+# pp bookmarkname - prints the bookmark
 # p b[TAB] - tab completion is available
 # d bookmarkname - deletes the bookmark
 # d [TAB] - tab completion is available
@@ -67,7 +67,7 @@ function g {
 }
 
 # print bookmark
-function p {
+function pp {
     check_help $1
     source $SDIRS
     echo "$(eval $(echo echo $(echo \$DIR_$1)))"
@@ -89,7 +89,7 @@ function check_help {
         echo ''
         echo 's <bookmark_name> - Saves the current directory as "bookmark_name"'
         echo 'g <bookmark_name> - Goes (cd) to the directory associated with "bookmark_name"'
-        echo 'p <bookmark_name> - Prints the directory associated with "bookmark_name"'
+        echo 'pp <bookmark_name> - Prints the directory associated with "bookmark_name"'
         echo 'd <bookmark_name> - Deletes the bookmark'
         echo 'll                - Lists all available bookmarks'
         kill -SIGINT $$
@@ -159,11 +159,11 @@ function _purge_line {
 # bind completion command for g,p,d to _comp
 if [ $ZSH_VERSION ]; then
     compctl -K _compzsh g
-    compctl -K _compzsh p
+    compctl -K _compzsh pp
     compctl -K _compzsh d
 else
     shopt -s progcomp
     complete -F _comp g
-    complete -F _comp p
+    complete -F _comp pp
     complete -F _comp d
 fi
